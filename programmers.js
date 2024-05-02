@@ -36,5 +36,3 @@ function solution(balls, share) {
     let answer = BigInt(sum1) / (BigInt(sum2) * BigInt(sum3));
     return answer;
 }
-
-console.log(solution(30,5));
