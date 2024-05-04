@@ -1,10 +1,7 @@
-let voost = 1324445432787098;
-let barogo = String(voost)
+let array = [1,1,1,1,1,1,1];
 
+let sum = array.filter((a,b)=>{
+    array.indexOf(a) === b;
+})
 
-console.log(parseInt(barogo.split('').sort().reverse().join('')));
-
-let numbers = 3;
-
-console.log(Math.sqrt(numbers)  ==Math.trunc(Math.sqrt(numbers)));
-
+console.log(sum);
