@@ -1,13 +1,15 @@
-let array = [1,1,1,1,1,1,1];
+let array = [7,4,6,7,1,2,335,6,7,8];
 
-let sum = array.filter((a,b)=>{
-    array.indexOf(a) === b;
-})
 
-console.log(sum);
 
-NaN
-let number = '1234';
-let numbers = number.split('');
-console.log(isNaN(Number(numbers)));
-console.log(number.split('').map((e)=> isNaN(Number(e)) == true));
+
+
+let min = Math.min(...array);
+console.log(min);
+
+let arr1 = array.slice(0, array.indexOf(min));
+let arr2 = array.slice(array.indexOf(min)+1, array.length);
+let arr3 = arr1.concat(arr2);
+// console.log(arr1)
+// console.log(arr2);
+console.log(arr3);
