@@ -1,53 +1,62 @@
-class Stack {
-
-    constructor(){
+class Stack{
+    constructor(maxSize){
         this.arr = [];
+        this.size = 0;
+        this.maxSize = maxSize;
     }
 
-    push(data){
-        this.arr.push(data);
-    }
-
-    pop(index){
-        if(index === this.arr.length-1){
-            return this.arr.pop();
+    push(a){
+        if(this.size >= this.maxSize){
+            throw new Error('overflow stack');
         }
 
-        let result = this.arr.splice(index, 1);
-        return result;
+        this.arr[this.size] = a;
+        this.size++;
+        return a;
     }
 
-    empty(){
-        if(this.arr.length === 0){
-            return true;
-        } else {
-            return false;
+    pop(){
+        if(this.size <= 0){
+            throw new Error('underflow stack');
         }
+
+         let removed = this.arr[this.size - 1];
+         this.arr = this.arr.slice(0, this.size-1);
+         this.size--;
+         return removed;
+    }
+
+    isEmpty(){
+       return this.size == 0 ? true : false;
     }
 
     top(){
-        return this.arr[this.arr.length-1];
+        return this.arr.length == 0 ? -1 : this.arr[this.size - 1];
     }
 
-    bottom(){
-        return this.arr[0];
+    peek(){
+        return this.arr;
+    }
+
+    getSize(){
+        return this.arr.length; 
     }
 }
 
-let s = new Stack();
-s.push(10);
-s.push(20);
-s.push(30);
-s.push(30);
+let s1 = new Stack(10);
 
-console.log(s);
+s1.push(5);
+s1.push(6);
+s1.push(7);
+s1.push(8);
 
-s.pop(0);
+s1.pop();
+s1.pop();
+s1.pop();
+s1.pop();
 
-console.log(s);
-
-const logger = s.empty();
-console.log(logger);
-
-const top = s.top();
-console.log(top);
+s1.push(10);
+console.log(s1.peek());
+console.log(s1.isEmpty());
+console.log(s1.top());
+console.log(s1.getSize());
